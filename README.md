@@ -1,32 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
 
-Things you may want to cover:
+- Ruby 3.3.0
+- Rails 7.1.3.4
+- PostgreSQL 14.11
 
-* Ruby version
+## Installation
+Clone the repository and run the next commands:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-bundel install
+```
+bundle install
+```
+### Config DB
+Now create `.env` file and copy the ENV vars with your DB values based on [.env.example](.env.example) file
+```
+DATABASE=database-name
+DATABASE_USER=your-sa-name
+DATABASE_PASS=your-sa-password
+DATABASE_PORT=5432
+DATABASE_HOST=localhost
+```
+After config was done, run: 
+```
 rails db:setup
+```
+```
 rails db:seed
-rspec (optional)
+```
+#### Optional:
+To check the code coverage: run the command or click [Image](app/assets/images/coverage.png).
+```
+rspec
+```
+### Init the app:
+To login, use the default user, you can found it in [seeds.rb](db/seeds.rb) file
+```
 rails s
-To login use the default user, you can found it in seeds.rb file
+```
+User:
+```
+example@email.com
+```
+Password:
+```
+Password123?
+```

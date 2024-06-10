@@ -1,0 +1,36 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h5><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h5>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-8 col-sm-12 mb-3">
+      <%= form.label :title, class: 'form-label' %>
+      <%= form.text_field :title , class: 'form-control', required: true %>
+    </div>
+
+    <div class="col-md-4 col-sm-12 mb-3">
+      <%= form.label :published_at, class: 'form-label' %>
+      <%= form.datetime_field :published_at, class: 'form-control', include_seconds: false, required: true %>
+    </div>
+
+    <div class="col-md-12 col-sm-12 mb-3">
+      <div>
+        <%= form.label :body, class: 'form-label' %>
+        <%= form.text_area :body, class: 'form-control', rows: 10, required: true %>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit class: 'btn btn-outline-success' %>
+    </div>
+  </div>
+<% end %>

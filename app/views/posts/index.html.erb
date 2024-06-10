@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class='text-center mb-3'>Posts</h1>
+
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 col-lg-4 col-sm-6 col-sm-12">
+        <div class="card border-info mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to post.title, post_path(post) %></h5>
+            <p class="card-text"><%= body_preview_text(post.body) %></p>
+            <% if user_signed_in? %>
+              <%= link_to 'Show', post_path(post), class: 'card-link' %>
+              <%= link_to 'Edit', edit_post_path(post), class: 'card-link' %>
+              <%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete post: #{post.title}?" }, class: 'card-link' %>
+            <% end %>
+          </div>
+          <div class="card-footer text-body-secondary">
+            <%= post.published_at.strftime('%d/%m/%Y - %T') %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <div class="apple_pagination">
+      <%= will_paginate @posts %>
+    </div>
+  </div>
+</div>
